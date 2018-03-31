@@ -1,0 +1,15 @@
+PgAdmin installation happen with postgressql if it is checked in installation wizard in version 9.6.
+
+Postgres Sql  Open sql cmd prompt
+go to c:programfile\postgres\bin and open command prompt and 
+C:\blah\blah\bin> psql -U postgres template1 you shall get a psql prompt.
+
+Why Server Configuration in tool is disabled?
+
+PgAdmin=> Tool Menu-> Server Conf is editable only when admin pack is installed. 
+Admin pack can be found in /usr/share/postgresql/9.1/extension
+To install CREATE EXTENSION adminpack; 
+on postgres sql command promptAlso to see a list of installed extensions   select * from pg_extension;
+adminpack  = adminpack provides a number of support functions which pgAdmin and other administration
+and management tools can use to provide additional functionality, such as remote management of server log files. 
+Use of all these functions is restricted to superusers.
