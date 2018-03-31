@@ -1,0 +1,18 @@
+why below error at project import
+java.lang.IllegalArgumentException: Path for project must have only one segment.
+
+This error comes when project name has some illegal character while forming project name.
+
+Faced this issue in Grade (Mcq) so replaced placeholder (refereneces that starts with $) with actual value. I worked for me.
+Replaced 
+ <groupId>com.thirdpillar.loanpath</groupId>  
+ <artifactId>${loanpath.project.app}</artifactId> 
+ <version>6.2-SNAPSHOT</version>
+ <packaging>pom</packaging> 
+ <name>Loanpath ${loanpath.project.name} Application</name>
+With
+ <groupId>com.thirdpillar.loanpath</groupId> 
+ <artifactId>loanpath-grade-app</artifactId>  
+ <version>6.2-SNAPSHOT</version> 
+ <packaging>pom</packaging> 
+ <name>Loanpath Grade Application</name>
