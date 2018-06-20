@@ -1,0 +1,24 @@
+TRUNCATE
+
+TRUNCATE is a DDL command
+TRUNCATE is executed using a table lock and whole table is locked for remove all records.
+We cannot use Where clause with TRUNCATE.
+TRUNCATE removes all rows from a table.
+Minimal logging in transaction log, so it is performance wise faster.
+TRUNCATE TABLE removes the data by deallocating the data pages used to store the table data and records only the page deallocations in the transaction log.
+Identify column is reset to its seed value if table contains any identity column.
+To use Truncate on a table you need at least ALTER permission on the table.
+Truncate uses the less transaction space than Delete statement.
+Truncate cannot be used with indexed views.
+DELETE
+
+DELETE is a DML command.
+DELETE is executed using a row lock, each row in the table is locked for deletion.
+We can use where clause with DELETE to filter & delete specific records.
+The DELETE command is used to remove rows from a table based on WHERE condition.
+It maintain the log, so it slower than TRUNCATE.
+The DELETE statement removes rows one at a time and records an entry in the transaction log for each deleted row.
+Identity of column keep DELETE retain the identity.
+To use Delete you need DELETE permission on the table.
+Delete uses the more transaction space than Truncate statement.
+Delete can be used with indexed views.
