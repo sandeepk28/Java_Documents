@@ -1,0 +1,73 @@
+The writeReplace Method
+For Serializable and Externalizable classes, the writeReplace method allows a class of an object to nominate its own replacement in the stream before the object is written. By implementing the writeReplace method, a class can directly control the types and instances of its own instances being serialized.
+The method is defined as follows:
+
+
+	ANY-ACCESS-MODIFIER Object writeReplace() {
+   		 throws ObjectStreamException;
+The writeReplace method is called when ObjectOutputStream is preparing to write the object to the stream. The ObjectOutputStream checks whether the class defines the writeReplace method. If the method is defined, the writeReplace method is called to allow the object to designate its replacement in the stream. The object returned should be either of the same type as the object passed in or an object that when read and resolved will result in an object of a type that is compatible with all references to the object. If it is not, a ClassCastException will occur when the type mismatch is discovered.
+
+
+
+
+Spring copy has writeReplace and readResolve in end
+
+Singlton just need readResolve and not writeReplace.
+
+below better example http://www.jguru.com/faq/view.jsp?EID=44039
+
+These methods are used to allow an object to provide an alternative representation for itself within an ObjectStream. Consider for instance the common means of implementing an enumerated type:
+
+public class Gender implements Serializable {
+  public final static Gender MALE   = new Gender("Male");
+  public final static Gender FEMALE = new Gender("Female");
+
+  private String name;
+
+  private Gender(String name) {
+    this.name = name;
+  }
+}
+This works fine within one JVM; there will be at most two Gender objects created, no matter how often you use Gender.MALE and Gender.FEMALE in your code. However, consider what happens when an instance of this class is serialized across JVMs. The ObjectInputStream will create a new instance of Gender that has the same value as the original instance. So, if you have many thousands objects that have been de-serialized via RMI you might end up with many thousands of extra instances of Gender. The writeReplace() and readResolve() methods are the hook to solve this problem.
+One way of eliminating the extra instances and some of the unnecessary heap allocation would be to do something like this:
+
+public class Gender implements Serializable {
+  public final static Gender MALE   = new Gender("Male");
+  public final static Gender FEMALE = new Gender("Female");
+
+  private String name;
+
+  private Gender(String name) {
+    this.name = name;
+  }
+
+  Object writeReplace() throws ObjectStreamException {
+    if (this.equals(MALE)) {
+      return SerializedForm.MALE_FORM;
+    } else {
+      return SerializedForm.FEMALE_FORM;
+    }
+  }
+
+  private static class SerializedForm implements Serializable {
+
+    final static SerializedForm MALE_FORM   = new SerializedForm(0);
+    final static SerializedForm FEMALE_FORM = new SerializedForm(1);
+
+    private int value;
+
+    SerializedForm(int value) {
+      this.value = value;
+    }
+
+    Object readResolve() throws ObjectStreamException {
+      if (value == MALE_FORM.value) {
+        return Gender.MALE;
+      } else {
+        return Gender.FEMALE;
+      }
+    }
+  }
+}
+This also guarantees that in all cases where genderInstance.equals(MALE) is true, genderInstance == Gender.MALE is also true.
+This was a trivial example. I've used this mechanism in other instances where a great deal of storage or time could be saved by serializing only a shorthand or mnemonic form of the object - consider the definition of a currency which could be serialized as only its mnemonic symbol.

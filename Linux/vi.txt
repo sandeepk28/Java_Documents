@@ -1,0 +1,62 @@
+cmd mode
+yy yank(copy) - same line, 5yy - 5 line copy
+dd cut, 5 dd
+p to paste
+
+
+dw- cut current word + next step
+yw
+p
+3yw
+-----Search----
+/
+/textTosearch
+n- move forwar
+N- to move backward
+----------Replace ----- below works like insert in windows
+r replace
+R replace till ESC
+
+---------
+u undo
+ctrl+ u redo
+x delete a character
+dd delete a line
+
+if no arrory works
+j- 
+k-up
+l-right
+h-left
+================insert mode===============
+
+:w  to save , donot quit vi
+q- quit, if no change
+q! - to force quit
+wq write and quit
+:q to quit if havnot made any edit
+:wq to quit and save edit
+:q! force quit
+
+=================================cat 
+====command -create file >, concatenate, copy, append >>
+file creation
+cat > filename
+enter text in file
+press enter to go to new line - press ctrl z to save
+if done move to next line , last line will nnot save
+
+if again cat > filename it will overright
+
+
+------let concatenate-----
+cat filename filename2 filename3
+it will dispaly content of file,just dispaly here
+
+cat file1 >> nature
+append content of file1 in nature at end of file. no content dis[paly here
+ ----copy file- creating a new file with content of old
+cat file1 > file2
+new file2 wiht contne of file1 created
+
+from filename first then filename2 then filename3
