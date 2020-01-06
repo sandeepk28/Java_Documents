@@ -1,0 +1,35 @@
+void triggerAgeSum(){
+		Doctor d=new Doctor(30,"ak","Physio");
+		Doctor d2=new Doctor(30,"Pk","Physio");
+		Person peter =new Person(45, "Peter");
+		
+		/*List<? extends Person> doctors=new ArrayList<Person>();
+		doctors.add(d);
+		doctors.add(d2);
+		doctors.add(peter);
+		//add() inside method body :  ? extends Person , upper bound- same or child can not be added, parent is not applicable because of upper bound
+		//same or parents  can be send as a argument while calling method.
+		List<? extends Doctor> dds=new ArrayList<Doctor>();
+		dds.add(peter);
+		*/
+		
+		List<Doctor> dds=new ArrayList<Doctor>();
+		List<Person> doctors=new ArrayList<Person>();
+		doctors.add(d2);
+		doctors.add(d2);
+		
+		sumAge(doctors);
+	}
+
+public <T extends Person> void sumAge(List<T> persons){
+	
+	List<T> doctors=new ArrayList<T>();
+	doctors.addAll(persons);
+	
+	
+	int sum=0;
+	System.out.println(sum);
+	
+		
+		
+	}
