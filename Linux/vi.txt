@@ -21,7 +21,7 @@ R replace till ESC
 u undo
 ctrl+ u redo
 x delete a character
-dd delete a line
+dd delcete a line
 
 if no arrory works
 j- 
@@ -54,7 +54,7 @@ cat filename filename2 filename3
 it will dispaly content of file,just dispaly here
 
 cat file1 >> nature
-append content of file1 in nature at end of file. no content dis[paly here
+append content of file1 in nature at end of file. no content dis[p  aly here
  ----copy file- creating a new file with content of old
 cat file1 > file2
 new file2 wiht contne of file1 created

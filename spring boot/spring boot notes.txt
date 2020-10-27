@@ -1,0 +1,27 @@
+
+
+
+migration from mvc to boot is difficult, those xml are difficult to automatete. Opinoinated approch brinns a lot on configurations
+
+
+profile (env) secific properties 
+
+In application.properties specify properties that will be common to all profiles. In application-xxx.properties specify properties for a particular profile.
+
+Then activate profile by spring.profiles.active: xxx in application.properties or add JVM argument -Dspring.profiles.active=xxx
+
+A property declared in application-xxx.properties will be priority over a property declared in application.properties
+ 
+ Hierarchical Properties  @ConfigurationProperties in Spring Boot 
+ 
+ application.properties 	- logging.level.org.springframework.web=debug		to set logging level
+ 
+ Logging- exclude  artifact id - spring-boot-starter-logging from dependency spring-boot-starter-web
+			add dependency spring-boot-starter-log4j2 then add a log4j.xml or yml or json file , name should be log4j there define console appender and file pattern etc
+			
+			------------
+			spring.jpa.hibernate.ddl-auto=update
+			
+Spring boot scans entity if main class has @EntityScan(basePackage="") annotation. Main class has always annotation @SpringBootApplication
+			
+ 

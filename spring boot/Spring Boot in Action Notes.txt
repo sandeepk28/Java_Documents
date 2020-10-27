@@ -1,0 +1,36 @@
+CLI
+Spring Boot’s CLI leverages starter dependencies and auto-configuration to let you
+focus on writing code. 
+the CLI detected the types that are being used, and it
+knows which starter dependencies to add to the classpath to make it work. Once those
+dependencies are in the classpath, a series of auto-configuration kicks in and ensures
+that DispatcherServlet and Spring MVC are enabled so that the controller can
+respond to HTTP requests. Spring Boot’s CLI is an optional piece of Spring Boot’s power.
+
+THE ACTUATOR
+inspect the inner workings of your application, including details such as
+What beans have been configured in the Spring application context
+■ What decisions were made by Spring Boot’s auto-configuration
+■ What environment variables, system properties, configuration properties, and command-line arguments are available to your application
+■ The current state of the threads in and supporting your application
+■ A trace of recent HTTP requests handled by your application
+■ Various metrics pertaining to memory usage, garbage collection, web requests, and data source usage
+
+The Actuator exposes this information in two ways: via web endpoints or via a shell
+interface. In the latter case, you can actually open a secure shell (SSH) into your application and issue commands to inspect your application as it runs
+
+What Spring Boot isn’t
+
+
+ singel point failure  ---solution Redundency (backpu ready, human has 2 organs if one fails)
+ Do not kill randomness	- it is natural, space for misc, fix plan are dengerous, understand randomness in plan or life, anticipated , application the worst avg and best, plan the risk
+ 
+ Have heart & soul to plan
+ 
+ Multiple small risk (do not depends on one perfect plan, nothing such exist)- take big risk but not bet all
+ Do not consumed by data-
+ keep option open
+ see all you avoid
+ respect the old 
+ 
+ try to study past, study the base rate (avg success rate, how many out of 100 successedd)
